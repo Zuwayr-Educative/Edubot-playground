@@ -99,6 +99,11 @@ const App = () => {
         }
     };
 
+    // Function to handle clearing the chat
+    const handleClearChat = () => {
+        setMessages([]);
+    };
+
     // UI Component for API Key input
     const ApiKeyInput = ({ onSetApiKey, error }) => {
         const [localApiKey, setLocalApiKey] = useState('');
@@ -205,6 +210,16 @@ const App = () => {
                             <label htmlFor="topP" className="font-semibold text-gray-300 flex justify-between">Top P <span>{topP.toFixed(2)}</span></label>
                             <input id="topP" type="range" min="0" max="1" step="0.01" value={topP} onChange={(e) => setTopP(parseFloat(e.target.value))} className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-cyan-500" />
                         </div>
+                    </div>
+
+                    {/* Clear Chat Button */}
+                    <div className="mt-6">
+                        <button
+                            onClick={handleClearChat}
+                            className="w-full px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors"
+                        >
+                            Clear Chat
+                        </button>
                     </div>
                 </aside>
 
